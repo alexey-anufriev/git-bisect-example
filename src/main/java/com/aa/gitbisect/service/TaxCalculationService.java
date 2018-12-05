@@ -8,6 +8,12 @@ public class TaxCalculationService {
     private static final BigDecimal HUNDRED = BigDecimal.valueOf(100);
     private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 
+    /**
+     * Return calculated net salary in currency (with two decimal places)
+     * @param grossSalaryInCurrency gross salary in currency (with two decimal places)
+     * @param taxInPercent tax level in percent
+     * @return net salary in currency (with two decimal places)
+     */
     public BigDecimal getNetSalaryInCurrency(BigDecimal grossSalaryInCurrency, int taxInPercent) {
         BigDecimal taxInCurrency = grossSalaryInCurrency
                 .multiply(BigDecimal.valueOf(taxInPercent))
