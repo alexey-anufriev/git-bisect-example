@@ -15,13 +15,15 @@ public class TaxCalculationService {
      */
     public BigDecimal getNetSalaryInCurrency(BigDecimal grossSalaryInCurrency, int taxInPercent) {
         BigDecimal taxInCurrency = getPercentPart(grossSalaryInCurrency, taxInPercent);
-
-        return grossSalaryInCurrency
-                .subtract(taxInCurrency)
-                .setScale(2, ROUNDING_MODE);
+        BigDecimal netSalaryInCurrency = grossSalaryInCurrency.subtract(taxInCurrency);
+        return formatToCurrency(netSalaryInCurrency);
     }
 
     private static BigDecimal getPercentPart(BigDecimal value, int percent) {
         return value.multiply(BigDecimal.valueOf(percent)).divide(BigDecimal.valueOf(100), ROUNDING_MODE);
+    }
+
+    private static BigDecimal formatToCurrency(BigDecimal value) {
+        return value.setScale(2, ROUNDING_MODE);
     }
 }
