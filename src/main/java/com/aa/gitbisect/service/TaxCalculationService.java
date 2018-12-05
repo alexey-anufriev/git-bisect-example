@@ -6,6 +6,8 @@ import java.math.RoundingMode;
 public class TaxCalculationService {
 
     private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_EVEN;
+    private static final int HUNDRED_PERCENT = 100;
+    private static final int NUMBER_OF_DECIMAL_PLACES = 2;
 
     /**
      * Return calculated net salary in currency (with two decimal places)
@@ -20,10 +22,10 @@ public class TaxCalculationService {
     }
 
     private static BigDecimal getPercentPart(BigDecimal value, int percent) {
-        return value.multiply(BigDecimal.valueOf(percent)).divide(BigDecimal.valueOf(100), ROUNDING_MODE);
+        return value.multiply(BigDecimal.valueOf(percent)).divide(BigDecimal.valueOf(HUNDRED_PERCENT), ROUNDING_MODE);
     }
 
     private static BigDecimal formatToCurrency(BigDecimal value) {
-        return value.setScale(2, ROUNDING_MODE);
+        return value.setScale(NUMBER_OF_DECIMAL_PLACES, ROUNDING_MODE);
     }
 }
