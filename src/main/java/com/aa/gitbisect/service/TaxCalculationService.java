@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 public class TaxCalculationService {
 
-    private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
+    private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_EVEN;
 
     /**
      * Return calculated net salary in currency (with two decimal places)
